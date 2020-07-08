@@ -1,5 +1,5 @@
 ---
-- name: iptables configurations
+- name: iptables configurations - nginx
   hosts: web
   become: yes
   become_method: sudo
