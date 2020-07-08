@@ -13,6 +13,10 @@ In this assignment you will need to configure secure and redundant website by us
 * SSH login to machine C and B will be allowed only with keys
 * Make sure everything works even after a reboot.
 
+-----------------------
+Project Structure 
+-----------------------
+
 ├── Assignment_v2
 
 │   ├── Files
