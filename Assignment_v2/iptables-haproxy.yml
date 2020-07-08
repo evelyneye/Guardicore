@@ -1,5 +1,5 @@
 ---
-- name: iptables configurations
+- name: iptables configurations - haproxy
   host: front
   become: yes
   become_method: sudo
