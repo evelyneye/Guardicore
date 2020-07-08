@@ -14,21 +14,38 @@ In this assignment you will need to configure secure and redundant website by us
 * Make sure everything works even after a reboot.
 
 ├── Assignment_v2
+
 │   ├── Files
+
 │   │   ├── cli.ini
+
 │   │   ├── haproxy.conf
+
 │   │   ├── nginx.conf
+
 │   │   └── test.html
+
 │   ├── certbot.yml
+
 │   ├── handlers
+
 │   │   └── main.yml
+
 │   ├── haproxy.yml
+
 │   ├── inventory
+
 │   ├── iptables-haproxy.yml
+
 │   ├── iptables-nginx.yml
-│   ├── main.yml
+
+│   ├── main.yml\n
 │   ├── nginx.yml
+
 │   ├── run-certbot.j2
+
 │   ├── setup_certbot_script.yml
+
 │   └── ssh.yml
+
 └── README.md
