@@ -14,9 +14,7 @@ In this assignment you will need to configure secure and redundant website by us
 * Make sure everything works even after a reboot.
 
 ├── Assignment_v2
-
 │   ├── Files
-
 │   │   ├── cli.ini
 │   │   ├── haproxy.conf
 │   │   ├── nginx.conf
