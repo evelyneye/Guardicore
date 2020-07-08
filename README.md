@@ -39,7 +39,8 @@ In this assignment you will need to configure secure and redundant website by us
 
 │   ├── iptables-nginx.yml
 
-│   ├── main.yml\n
+│   ├── main.yml
+
 │   ├── nginx.yml
 
 │   ├── run-certbot.j2
