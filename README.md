@@ -19,38 +19,38 @@ Project Structure
 
 ├── Assignment_v2
 
-│   ├── Files
+│   ├── Files   //Including configuration files, index files
 
-│   │   ├── cli.ini
+│   │   ├── cli.ini   //Certbot config
 
-│   │   ├── haproxy.conf
+│   │   ├── haproxy.conf    //HAProxy config
 
-│   │   ├── nginx.conf
+│   │   ├── nginx.conf    //nginx config
 
-│   │   └── test.html
+│   │   └── test.html     //index page
 
-│   ├── certbot.yml
+│   ├── certbot.yml   //Certbot Installation and Configuration
 
-│   ├── handlers
+│   ├── handlers    
 
-│   │   └── main.yml
+│   │   └── main.yml    //Restart services tasks
 
-│   ├── haproxy.yml
+│   ├── haproxy.yml   //Haproxy Installation and Configuration
 
-│   ├── inventory
+│   ├── inventory   //Hosts
 
-│   ├── iptables-haproxy.yml
+│   ├── iptables-haproxy.yml    //iptables configurations - haproxy
 
-│   ├── iptables-nginx.yml
+│   ├── iptables-nginx.yml    //iptables configurations - nginx
 
-│   ├── main.yml
+│   ├── main.yml    //Master playbook
 
-│   ├── nginx.yml
+│   ├── nginx.yml   //nginx Installation and Configuration
 
-│   ├── run-certbot.j2
+│   ├── run-certbot.j2    //Generate certificate
 
-│   ├── setup_certbot_script.yml
+│   ├── setup_certbot_script.yml    //Setup certbot script and link cronjob to renew cert
 
-│   └── ssh.yml
+│   └── ssh.yml   //Disable password authentication 
 
 └── README.md
