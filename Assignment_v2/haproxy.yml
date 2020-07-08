@@ -1,0 +1,33 @@
+---
+- name: Haproxy Installation and Configuration
+  hosts: front
+  become: yes
+  become_method: sudo
+  gather_facts: yes
+  
+  tasks:
+  - name: Install haproxy
+    apt:
+      name: haproxy
+      state: present
+
+  - name: Enable/Start haproxy service
+    service:
+      name: haproxy
+      enabled: yes
+      state: started
+
+  - name: Check if the Certbot certificates exist
+    stat:
+      path: /opt/certbot/haproxy_fullchains/__fallback.pem
+    register: certbot_cert_check_result
+
+  - name: Configure haproxy
+    copy:
+      src: Files/haproxy.conf
+      dest: /etc/haproxy/haproxy.conf
+      owner: root
+      group: root
+      mode: 0644
+    notify:
+    - Restart HAProxy

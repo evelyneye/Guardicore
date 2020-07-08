@@ -1,0 +1,16 @@
+---
+- name: SSH Configuration
+  hosts: web
+  become: yes
+  become_method: sudo
+  gather_facts: yes
+  
+  tasks:
+  - name: Disable password authentication for ssh
+    lineinfile: 
+      path: /etc/ssh/sshd_config
+      regexp: "PasswordAuthentication yes"
+      line: "PasswordAuthentication no"
+      state: present
+    notify:
+    - Restart ssh  

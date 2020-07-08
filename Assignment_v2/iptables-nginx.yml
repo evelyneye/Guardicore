@@ -1,0 +1,62 @@
+---
+- name: iptables configurations
+  hosts: web
+  become: yes
+  become_method: sudo
+  gather_facts: yes
+  
+  tasks:
+  - name: Flush existing firewall rules
+    iptables:
+      flush: true
+
+  - name: Firewall rule - allow all loopback traffic
+    iptables:
+      action: append
+      chain: INPUT
+      in_interface: lo
+      jump: ACCEPT
+    
+  - name: Firewall rule - allow established/new connections
+    iptables:
+      chain: INPUT
+      ctstate: ESTABLISHED,NEW
+      jump: ACCEPT
+    
+  - name: Firewall rule - allow port 22/SSH traffic
+    iptables:
+      chain: INPUT
+      destination_port: 22
+      jump: ACCEPT
+      protocol: tcp
+
+  - name: Firewall rule - allow port 8080/HTTP traffic
+    iptables:
+      chain: INPUT
+      destination_port: 8080
+      jump: ACCEPT
+      protocol: tcp
+    
+  - name: Firewall rule - drop any incoming traffic without rule
+    iptables:
+      chain: INPUT
+      jump: DROP
+    
+  - name: Firewall rule - drop any forwarding traffic without rule
+    iptables:
+      chain: FORWARD
+      jump: DROP
+
+  - name: Firewall rule - allow any outgoing traffic without rule
+    iptables:
+      chain: OUTPUT
+      jump: ACCEPT
+
+  - name: Install `netfilter-persistent` && `iptables-persistent` packages
+      package:
+        name: "{{item}}"
+        state: present
+      with_items:
+      - iptables-persistent
+      - netfilter-persistent
+    when: ansible_os_family == "Ubuntu"

@@ -1,0 +1,45 @@
+---
+- name: nginx Installation and Configuration
+  hosts: web
+  become: yes
+  become_method: sudo
+  gather_facts: yes
+    
+  tasks:  
+  - name: Install nginx
+    apt:
+      name: nginx
+      state: present
+
+  - name: Enable/Start nginx service
+    service:
+      name: nginx
+      enabled: yes
+      state: started
+
+  - name: Create web root directory
+    file:
+        path: /var/www/html
+        state: directory
+        mode: 0755
+  
+  - name: Create home page for default site
+    copy:
+      src: Files/test.html
+      dest: /var/www/html/test.html
+      owner: root
+      group: root
+      mode: 0644
+
+  - name: Create default site configurations
+    copy:
+      src: Files/nginx.conf
+      dest: /etc/nginx/conf.d/nginx.conf
+      owner: root
+      group: root
+      mode: 0644
+    notify:
+    - Restart nginx
+
+
+
