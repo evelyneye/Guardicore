@@ -13,19 +13,25 @@
       owner: root
       group: root
       mode: 0755
-  - 
-  name: Copy Certbot script
+
+  - name: Copy Certbot script
     template:
       src: run-certbot.j2
       dest: /opt/certbot/scripts/run-certbot
       owner: root
       group: root
       mode: 0755
-  - 
-  name: Link cronjob to renew Certbot certificates
+
+  - name: Link cronjob to renew Certbot certificates
     file:
       src: /opt/certbot/scripts/run-certbot
       dest: /etc/cron.daily/run-certbot
       owner: root
       group: root
       state: link
+  
+  - name: Renew Certbot cert after reboot
+    cron:
+      name: "Renew Certbot cert after reboot"
+      special_time: reboot
+      job: "/opt/certbot/scripts/run-certbot"
