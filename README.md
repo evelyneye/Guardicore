@@ -13,22 +13,44 @@ In this assignment you will need to configure secure and redundant website by us
 * SSH login to machine C and B will be allowed only with keys
 * Make sure everything works even after a reboot.
 
+-----------------------
+Project Structure 
+-----------------------
+
 ├── Assignment_v2
-│   ├── Files
-│   │   ├── cli.ini
-│   │   ├── haproxy.conf
-│   │   ├── nginx.conf
-│   │   └── test.html
-│   ├── certbot.yml
-│   ├── handlers
-│   │   └── main.yml
-│   ├── haproxy.yml
-│   ├── inventory
-│   ├── iptables-haproxy.yml
-│   ├── iptables-nginx.yml
-│   ├── main.yml
-│   ├── nginx.yml
-│   ├── run-certbot.j2
-│   ├── setup_certbot_script.yml
-│   └── ssh.yml
+
+│   ├── Files   //Including configuration files, index files
+
+│   │   ├── cli.ini   //Certbot config
+
+│   │   ├── haproxy.conf    //HAProxy config
+
+│   │   ├── nginx.conf    //nginx config
+
+│   │   └── test.html     //index page
+
+│   ├── certbot.yml   //Certbot Installation and Configuration
+
+│   ├── handlers    
+
+│   │   └── main.yml    //Restart services tasks
+
+│   ├── haproxy.yml   //Haproxy Installation and Configuration
+
+│   ├── inventory   //Hosts
+
+│   ├── iptables-haproxy.yml    //iptables configurations - haproxy
+
+│   ├── iptables-nginx.yml    //iptables configurations - nginx
+
+│   ├── main.yml    //Master playbook
+
+│   ├── nginx.yml   //nginx Installation and Configuration
+
+│   ├── run-certbot.j2    //Generate certificate
+
+│   ├── setup_certbot_script.yml    //Setup certbot script and link cronjob to renew cert
+
+│   └── ssh.yml   //Disable password authentication 
+
 └── README.md
