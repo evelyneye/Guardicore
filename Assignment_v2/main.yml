@@ -6,3 +6,18 @@
 - import_tasks: iptables-nginx.yml
 - import_tasks: iptables-haproxy.yml
 - import_tasks: ssh.yml
+
+- name: Restart HAProxy
+  service:
+    name: haproxy
+    state: restarted
+
+- name: Restart nginx
+  service:
+    name: nginx
+    state: restarted
+
+- name: Restart ssh
+  service:
+    name: ssh
+    state: restarted
