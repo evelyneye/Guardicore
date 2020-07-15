@@ -23,9 +23,9 @@
     register: certbot_cert_check_result
 
   - name: Configure haproxy
-    copy:
-      src: Files/haproxy.conf
-      dest: /etc/haproxy/haproxy.conf
+    template:
+      src: Files/haproxy.cfg.j2
+      dest: /etc/haproxy/haproxy.cfg
       owner: root
       group: root
       mode: 0644
